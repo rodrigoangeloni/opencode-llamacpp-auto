@@ -6,7 +6,7 @@ You start llama.cpp, OpenCode shows the model. You switch models, OpenCode follo
 
 ```
 llama.cpp (local)
-  └── Qwen3.5-9B-MTP       131072 ctx · text,image,video
+  └── Qwen3.8-27B          131072 ctx · text
         ├── none
         └── thinking
 ```
@@ -43,14 +43,14 @@ Or as a local directory — OpenCode loads every package directory under `~/.con
 Start llama.cpp however you normally do:
 
 ```sh
-llama-server -m model.gguf --alias Qwen3.5-9B --ctx-size 131072 --port 8080 --jinja
+llama-server -m model.gguf --alias Qwen3.8-27B --ctx-size 131072 --port 8080 --jinja
 ```
 
 Then pick `llama.cpp (local)` in `/models`. On the CLI:
 
 ```sh
-opencode run -m "llamacpp/Qwen3.5-9B" "hello"
-opencode run -m "llamacpp/Qwen3.5-9B#thinking" "hello"
+opencode run -m "llamacpp/Qwen3.8-27B" "hello"
+opencode run -m "llamacpp/Qwen3.8-27B#thinking" "hello"
 ```
 
 Switch to another model or restart the server on another port: the provider refreshes within 15 seconds, keeping its name in the picker.
