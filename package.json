@@ -1,0 +1,36 @@
+{
+  "name": "opencode-llamacpp-auto",
+  "version": "0.1.0",
+  "description": "OpenCode plugin that auto-detects a local llama.cpp server and publishes the loaded model with its real context window, modalities and reasoning variants.",
+  "type": "module",
+  "exports": {
+    ".": "./index.ts"
+  },
+  "files": [
+    "index.ts",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "opencode",
+    "opencode-plugin",
+    "llama.cpp",
+    "llama-server",
+    "local-models",
+    "gguf",
+    "self-hosted"
+  ],
+  "license": "MIT",
+  "author": "Rodrigo Angeloni",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rodrigoangeloni/opencode-llamacpp-auto.git"
+  },
+  "homepage": "https://github.com/rodrigoangeloni/opencode-llamacpp-auto#readme",
+  "bugs": {
+    "url": "https://github.com/rodrigoangeloni/opencode-llamacpp-auto/issues"
+  },
+  "dependencies": {
+    "@opencode/plugin": "^2.2.6"
+  }
+}
