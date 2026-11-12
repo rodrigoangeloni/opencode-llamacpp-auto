@@ -72,6 +72,14 @@ opencode-llamacpp-auto/
 - OpenCode v2.
 - A `llama-server` build that exposes `/health`, `/props` and `/v1/models`.
 
+**Verified with**
+
+| Component | Version |
+|---|---|
+| OpenCode | `2.2.7` |
+| llama.cpp `llama-server` | `0.9.0-dev`, build `b12323`, commit `93cf736a8` |
+| `@opencode/plugin` | `^2.2.6` (declared dependency) |
+
 #### Install
 
 As a Git package:
@@ -181,6 +189,14 @@ opencode-llamacpp-auto/
 
 - OpenCode v2.
 - Un build de `llama-server` que exponga `/health`, `/props` y `/v1/models`.
+
+**Verificado con**
+
+| Componente | Versión |
+|---|---|
+| OpenCode | `2.2.7` |
+| llama.cpp `llama-server` | `0.9.0-dev`, build `b12323`, commit `93cf736a8` |
+| `@opencode/plugin` | `^2.2.6` (dependencia declarada) |
 
 #### Instalación
 
