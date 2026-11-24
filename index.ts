@@ -93,11 +93,17 @@ function contextLength(props: Props, model: RemoteModel): number {
   return typeof value === "number" && Number.isSafeInteger(value) && value > 0 ? value : FALLBACK_CONTEXT
 }
 
-function displayName(id: string, props: Props): string {
-  const alias = props.model_alias?.trim()
-  if (alias) return alias
+function fileNameFromId(id: string): string {
   const file = id.split(/[\\/]/).pop() ?? id
   return file.replace(/\.gguf$/i, "")
+}
+
+function displayName(id: string, props: Props): string {
+  const raw = props.model_alias?.trim()
+  // llama-server reports the full model path as model_alias when --alias is not
+  // supplied. Only use it as a display name when it is not a path.
+  const alias = raw && !/[\\/]/.test(raw) ? raw : ""
+  return alias || fileNameFromId(id)
 }
 
 /**
@@ -128,13 +134,16 @@ function reasoningVariants(props: Props): Model.Info["variants"] {
 
 function toModelInfo(props: Props, model: RemoteModel): Model.Info {
   const context = contextLength(props, model)
-  const base = Model.Info.default(providerID, Model.ID.make(model.id))
+  // Normalize path-like ids coming from the server so the picker and CLI show
+  // a short, stable model name even when no --alias was configured.
+  const modelId = fileNameFromId(model.id)
+  const base = Model.Info.default(providerID, Model.ID.make(modelId))
   const input = inputModalities(props, model)
   const output = outputModalities(model)
 
   return {
     ...base,
-    name: displayName(model.id, props),
+    name: displayName(modelId, props),
     capabilities: {
       tools: props.chat_template_caps?.supports_tool_calls ?? output.includes("text"),
       input,
